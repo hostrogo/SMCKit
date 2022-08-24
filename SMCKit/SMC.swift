@@ -96,7 +96,7 @@ extension Double {
 public extension FourCharCode {
 
     init(fromString str: String) {
-        precondition(str.characters.count == 4)
+        precondition(str.count == 4)
 
         self = str.utf8.reduce(0) { sum, character in
             return sum << 8 | UInt32(character)
@@ -183,7 +183,8 @@ public struct SMCParamStruct {
 
     public struct SMCKeyInfoData {
         /// How many bytes written to SMCParamStruct.bytes
-        var dataSize: IOByteCount = 0
+        ///var dataSize: IOByteCount = 0     modifé par JPV
+        var dataSize: UInt32 = 0
 
         /// Type of data written to SMCParamStruct.bytes. This lets us know how
         /// to interpret it (translate it to human readable)
